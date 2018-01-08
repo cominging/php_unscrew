@@ -2,7 +2,9 @@
 A program that decrypts files encrypted with php_screw
 
 # Compilation
-`g++ -lz -o unscrew unscrew.cpp`
+`sudo apt-get install build-essential zlib1g-dev # for Ubuntu 16.04`
+
+`g++ --std=c++11 -o unscrew unscrew.cpp -lz`
 
 # Usage
 ```
@@ -26,7 +28,8 @@ Contents of section .data:
  25a0 00000000 00000000 00000000           ............    
  ```
  
- Store the hex values in pairs of 2 (C++ short) from the start of the dump till the first null byte. It would result in this `3432c803c00001053e000d01` hexstring, this would be our crypt key.
+ Example: store the hex values in pairs of 2 (C++ short) from the start of the dump till the first null byte. It would result in this `3432c803c00001053e000d01` hexstring, this would be our crypt key.
+ For different applications, start of the key may be different, and end of the string may contain an extra null byte.
 
 # Obtaining the Header Length
 
